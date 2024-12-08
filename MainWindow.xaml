@@ -12,7 +12,13 @@
                 <GridView>
                     <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" />
                     <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Nazwa}" />
-                    <GridViewColumn Header="Liczba sztuk" DisplayMemberBinding="{Binding LiczbaSztuk}" />
+                    <GridViewColumn Header="Liczba sztuk">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding LiczbaSztuk}" FontSize="14" Foreground="Green" FontWeight="Bold" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Magazyn" DisplayMemberBinding="{Binding Magazyn}" />
                 </GridView>
             </ListView.View>
