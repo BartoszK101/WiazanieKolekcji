@@ -1,1 +1,1 @@
-# WiazanieKolekcji
+# Wiazanie-kolekcji
