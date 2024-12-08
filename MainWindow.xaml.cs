@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace WiazanieKompilacji
 {
-    /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
-    /// </summary>
-        public partial class MainWindow : Window
+    public partial class MainWindow : Window
     {
         private ObservableCollection<Produkt> ListaProduktow = null;
 
@@ -38,7 +35,11 @@ namespace WiazanieKompilacji
             ListaProduktow.Add(new Produkt("DZ-10", "długopis żelowy", 112, "Katowice 1"));
             ListaProduktow.Add(new Produkt("DZ-12", "długopis kulkowy", 280, "Katowice 2"));
             lstProdukty.ItemsSource = ListaProduktow;
+
+            
+            CollectionView widok = (CollectionView)CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
+            widok.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
+            widok.SortDescriptions.Add(new SortDescription("Nazwa", ListSortDirection.Ascending));
         }
     }
-
 }

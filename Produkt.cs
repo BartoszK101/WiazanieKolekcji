@@ -1,7 +1,10 @@
-public class Produkt
+namespace WiazanieKompilacji
 {
-    public string Symbol { get; set; }
-    public string Nazwa { get; set; }
-    public int LiczbaSztuk { get; set; }
-    public string Magazyn { get; set; }
+    public class Produkt
+    {
+        public string Symbol { get; set; }
+        public string Nazwa { get; set; }
+        public int LiczbaSztuk { get; set; }
+        public string Magazyn { get; set; }
+    }
 }
