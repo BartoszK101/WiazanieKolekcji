@@ -40,6 +40,21 @@ namespace WiazanieKompilacji
             CollectionView widok = (CollectionView)CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
             widok.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
             widok.SortDescriptions.Add(new SortDescription("Nazwa", ListSortDirection.Ascending));
+
+            
+            widok.Filter = FiltrUzytkownika;
+        }
+
+        private bool FiltrUzytkownika(object item)
+        {
+            if (string.IsNullOrEmpty(txtFilter.Text))
+                return true;
+            return ((item as Produkt).Nazwa.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private void TxtFilter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource).Refresh();
         }
     }
 }
