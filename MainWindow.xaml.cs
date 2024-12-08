@@ -56,5 +56,13 @@ namespace WiazanieKompilacji
         {
             CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource).Refresh();
         }
+        private void lstProdukty_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (lstProdukty.SelectedItem is Produkt selectedProduct)
+            {
+                var editWindow = new EditWindow(selectedProduct);
+                editWindow.Show();
+            }
+        }
     }
 }
