@@ -71,6 +71,14 @@ namespace WiazanieKompilacji
                 ListaProduktow.Remove(selectedProduct);
             }
         }
+        private void btnDodaj_Click(object sender, RoutedEventArgs e)
+        {
+            var addProductWindow = new AddProductWindow(true);
+            if (addProductWindow.ShowDialog() == true)
+            {
+                ListaProduktow.Add(addProductWindow.NowyProdukt);
+            }
+        }
 
     }
 }

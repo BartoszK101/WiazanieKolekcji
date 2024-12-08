@@ -40,5 +40,6 @@
 			</ListView.View>
 		</ListView>
 		<Button Content="Usuń" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Click="btnUsun_Click"/>
+		<Button Content="Dodaj" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Click="btnDodaj_Click"/>
 	</Grid>
 </Window>

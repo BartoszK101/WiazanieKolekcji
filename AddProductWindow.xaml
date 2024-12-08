@@ -1,0 +1,14 @@
+<Window x:Class="WiazanieKompilacji.AddProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dodaj Produkt" Height="220" Width="350">
+    <Grid>
+        <StackPanel>
+            <TextBox x:Name="txtSymbol" Margin="5" PlaceholderText="Symbol"/>
+            <TextBox x:Name="txtNazwa" Margin="5" PlaceholderText="Nazwa"/>
+            <TextBox x:Name="txtLiczbaSztuk" Margin="5" PlaceholderText="Liczba sztuk"/>
+            <TextBox x:Name="txtMagazyn" Margin="5" PlaceholderText="Magazyn"/>
+            <Button Content="Dodaj" Click="btnDodaj_Click" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>
