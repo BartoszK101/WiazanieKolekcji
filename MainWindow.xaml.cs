@@ -1,25 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WiazanieKompilacji
 {
     public partial class MainWindow : Window
     {
-        private ObservableCollection<Produkt> ListaProduktow = null;
+        private ObservableCollection<Produkt> ListaProduktow = new ObservableCollection<Produkt>();
 
         public MainWindow()
         {
@@ -29,19 +19,16 @@ namespace WiazanieKompilacji
 
         private void PrzygotujWiazanie()
         {
-            ListaProduktow = new ObservableCollection<Produkt>();
-            ListaProduktow.Add(new Produkt("01-11", "ołówek", 8, "Katowice 1"));
-            ListaProduktow.Add(new Produkt("PM-20", "pióro wieczne", 75, "Katowice 2"));
-            ListaProduktow.Add(new Produkt("DZ-10", "długopis żelowy", 112, "Katowice 1"));
-            ListaProduktow.Add(new Produkt("DZ-12", "długopis kulkowy", 280, "Katowice 2"));
+            ListaProduktow.Add(new Produkt { Symbol = "01-11", Nazwa = "ołówek", LiczbaSztuk = 8, Magazyn = "Katowice 1" });
+            ListaProduktow.Add(new Produkt { Symbol = "PM-20", Nazwa = "pióro wieczne", LiczbaSztuk = 75, Magazyn = "Katowice 2" });
+            ListaProduktow.Add(new Produkt { Symbol = "DZ-10", Nazwa = "długopis żelowy", LiczbaSztuk = 112, Magazyn = "Katowice 1" });
+            ListaProduktow.Add(new Produkt { Symbol = "DZ-12", Nazwa = "długopis kulkowy", LiczbaSztuk = 280, Magazyn = "Katowice 2" });
+
             lstProdukty.ItemsSource = ListaProduktow;
 
-            
             CollectionView widok = (CollectionView)CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource);
             widok.SortDescriptions.Add(new SortDescription("Magazyn", ListSortDirection.Ascending));
             widok.SortDescriptions.Add(new SortDescription("Nazwa", ListSortDirection.Ascending));
-
-            
             widok.Filter = FiltrUzytkownika;
         }
 
@@ -56,14 +43,14 @@ namespace WiazanieKompilacji
         {
             CollectionViewSource.GetDefaultView(lstProdukty.ItemsSource).Refresh();
         }
-        private void lstProdukty_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+        private void btnDodaj_Click(object sender, RoutedEventArgs e)
         {
-            if (lstProdukty.SelectedItem is Produkt selectedProduct)
-            {
-                var editWindow = new EditWindow(selectedProduct);
-                editWindow.Show();
-            }
+            var nowyProdukt = new Produkt { Symbol = "AA-00", Nazwa = "", LiczbaSztuk = 0, Magazyn = "" };
+            ListaProduktow.Add(nowyProdukt);
+            lstProdukty.SelectedItem = nowyProdukt;
         }
+
         private void btnUsun_Click(object sender, RoutedEventArgs e)
         {
             if (lstProdukty.SelectedItem is Produkt selectedProduct)
@@ -71,14 +58,11 @@ namespace WiazanieKompilacji
                 ListaProduktow.Remove(selectedProduct);
             }
         }
-        private void btnDodaj_Click(object sender, RoutedEventArgs e)
-        {
-            var addProductWindow = new AddProductWindow(true);
-            if (addProductWindow.ShowDialog() == true)
-            {
-                ListaProduktow.Add(addProductWindow.NowyProdukt);
-            }
-        }
 
+        private void btnPotwierdz_Click(object sender, RoutedEventArgs e)
+        {
+          
+            lstProdukty.Items.Refresh();
+        }
     }
 }
