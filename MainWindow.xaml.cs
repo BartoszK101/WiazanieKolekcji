@@ -64,5 +64,13 @@ namespace WiazanieKompilacji
                 editWindow.Show();
             }
         }
+        private void btnUsun_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstProdukty.SelectedItem is Produkt selectedProduct)
+            {
+                ListaProduktow.Remove(selectedProduct);
+            }
+        }
+
     }
 }

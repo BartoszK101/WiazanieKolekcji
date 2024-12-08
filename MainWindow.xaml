@@ -6,36 +6,39 @@
         xmlns:local="clr-namespace:WiazanieKompilacji"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <Style TargetType="ListViewItem">
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        </Style>
-    </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Filtruj:" Grid.Row="0" Grid.Column="0" Margin="5"/>
-        <TextBox x:Name="txtFilter" Grid.Row="0" Grid.Column="1" Margin="5" TextChanged="TxtFilter_TextChanged"/>
-        <ListView x:Name="lstProdukty" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" MouseDoubleClick="lstProdukty_MouseDoubleClick">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" />
-                    <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Nazwa}" />
-                    <GridViewColumn Header="Liczba sztuk">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding LiczbaSztuk}" FontSize="14" Foreground="Green" FontWeight="Bold" Background="LightGray" TextAlignment="Right" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="Magazyn" DisplayMemberBinding="{Binding Magazyn}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+	<Window.Resources>
+		<Style TargetType="ListViewItem">
+			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+		</Style>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Label Content="Filtruj:" Grid.Row="0" Grid.Column="0" Margin="5"/>
+		<TextBox x:Name="txtFilter" Grid.Row="0" Grid.Column="1" Margin="5" TextChanged="TxtFilter_TextChanged"/>
+		<ListView x:Name="lstProdukty" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" MouseDoubleClick="lstProdukty_MouseDoubleClick">
+			<ListView.View>
+				<GridView>
+					<GridViewColumn Header="Symbol" DisplayMemberBinding="{Binding Symbol}" />
+					<GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Nazwa}" />
+					<GridViewColumn Header="Liczba sztuk">
+						<GridViewColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding LiczbaSztuk}" FontSize="14" Foreground="Green" FontWeight="Bold" Background="LightGray" TextAlignment="Right" />
+							</DataTemplate>
+						</GridViewColumn.CellTemplate>
+					</GridViewColumn>
+					<GridViewColumn Header="Magazyn" DisplayMemberBinding="{Binding Magazyn}" />
+				</GridView>
+			</ListView.View>
+		</ListView>
+		<Button Content="Usuń" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" Click="btnUsun_Click"/>
+	</Grid>
 </Window>
